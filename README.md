@@ -43,7 +43,26 @@ Este sistema foi criado para auxiliar a empreendedora Gilvanete Pio no controle 
 
 ---
 
-## 📝 Como executar
+🔮 Melhorias Futuras
+Algumas ideias de evolução do sistema:
+
+📱 Aplicativo mobile (APK Android) com sincronização local
+
+🧹 Botão de limpar banco de dados direto pelo menu
+
+❌ Opção para excluir produtos e serviços individualmente
+
+🔐 Tela de login com senha de acesso
+
+☁️ Integração futura com armazenamento em nuvem
+
+📤 Exportação de relatórios para PDF
+
+📊 Painel com gráficos de vendas mensais
+
+
+🛡️ Licença
+Projeto de uso educacional e privado. Código aberto apenas para fins acadêmicos.
 
 1. Clone este repositório:
 
