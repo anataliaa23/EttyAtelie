@@ -1,0 +1,1418 @@
+#:import Window kivy.core.window.Window
+#:import dp kivy.metrics.dp
+
+
+ScreenManager:
+    MenuPrincipal:
+    TelaProduto:
+    CadastrarProduto:
+    LocalizarProduto:
+    TelaServico:
+    CadastrarServico:
+    LocalizarServico:
+    TelaEstoque:
+    TelaVendaBuscar:
+    TelaVendaFinalizar:
+    TelaRelatorio:
+
+<MenuPrincipal>:
+    name: "menu"
+    canvas.before:
+        Color:
+            rgba:  0.376, 0.643, 0.314, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [dp(20), dp(50)]
+        spacing: dp(20)
+        size_hint: 1, 1
+
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(20)
+                padding: [0, 0, 0, dp(20)]
+
+                Label:
+                    text: "Ateliê da Etty"
+                    font_size: '28sp'
+                    font_name: "Roboto-CondensedItalic.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    color: 0, 0, 0, 1
+
+                Label:
+                    text: "MENU PRINCIPAL"
+                    font_size: '20sp'
+                    font_name: "Roboto-Bold.ttf"
+                    color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                Button:
+                    text: "PRODUTOS"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: app.root.current = "tela_produto"
+
+                Button:
+                    text: "SERVICOS"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: app.root.current = "tela_servico"
+
+                Button:
+                    text: "ESTOQUE"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: app.root.current = "tela_estoque"
+
+                Button:
+                    text: "VENDAS"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: app.root.current = "tela_venda_buscar"
+
+                Button:
+                    text: "RELATÓRIO"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: app.root.current = "tela_relatorio"
+
+<TelaProduto>:
+    name: "tela_produto"
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [dp(20), dp(40)]
+        spacing: dp(20)
+
+        Label:
+            text: "Ateliê da Etty"
+            font_size: '28sp'
+            font_name: "Roboto-CondensedItalic.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Label:
+            text: "Produtos"
+            font_size: '22sp'
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(15)
+                padding: [0, 0, 0, dp(20)]
+
+                Button:
+                    text: "Cadastrar Produto"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: app.root.current = "cadastrar_produto"
+
+                Button:
+                    text: "Localizar Produto"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: app.root.current = "localizar_produto"
+
+                Widget:
+
+                Button:
+                    text: "Voltar"
+                    size_hint: None, None
+                    size: dp(160), dp(50)
+                    font_size: '16sp'
+                    pos_hint: {"center_x": 0.5}
+                    background_normal: ''
+                    background_color: 0.6, 0.6, 0.6, 1
+                    on_press: app.root.current = "menu"
+
+<CadastrarProduto>:
+    name: "cadastrar_produto"
+    nome_input: nome_input
+    preco_input: preco_input
+    quantidade_input: quantidade_input
+    status_label: status_label
+
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(10)
+
+        Label:
+            text: "Ateliê da Etty"
+            font_size: '28sp'
+            font_name: "Roboto-CondensedItalic.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Label:
+            text: "Cadastrar Produto"
+            font_size: '22sp'
+            font_name: "Roboto-Bold.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                padding: dp(20)
+                spacing: dp(12)
+                size_hint_y: None
+                height: self.minimum_height
+                canvas.before:
+                    Color:
+                        rgba: 0.533, 0.8, 0.459, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [dp(20)]
+
+                TextInput:
+                    id: nome_input
+                    hint_text: "Nome do Produto"
+                    font_size: '16sp'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(40)
+
+                TextInput:
+                    id: preco_input
+                    hint_text: "Preço de Venda"
+                    input_filter: "float"
+                    font_size: '16sp'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(40)
+
+                TextInput:
+                    id: quantidade_input
+                    hint_text: "Quantidade Disponível"
+                    input_filter: "int"
+                    font_size: '16sp'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(40)
+
+                Button:
+                    text: "Cadastrar"
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '18sp'
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: root.salvar_produto()
+
+                Label:
+                    id: status_label
+                    text: ""
+                    font_size: '14sp'
+                    size_hint_y: None
+                    height: dp(30)
+                    color: 0, 0, 0, 1
+
+                Button:
+                    text: "← Voltar"
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '16sp'
+                    background_normal: ''
+                    background_color: 0.6, 0.6, 0.6, 1
+                    on_press: app.root.current = "tela_produto"
+
+<LocalizarProduto>:
+    name: "localizar_produto"
+    busca_input: busca_input
+    nome_label: nome_label
+    preco_input: preco_input
+    quantidade_input: quantidade_input
+    status_label: status_label
+
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(10)
+
+        Label:
+            text: "Ateliê da Etty"
+            font_size: '28sp'
+            font_name: "Roboto-CondensedItalic.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Label:
+            text: "Localizar Produto"
+            font_size: '22sp'
+            font_name: "Roboto-Bold.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                padding: dp(20)
+                spacing: dp(12)
+                size_hint_y: None
+                height: self.minimum_height
+                canvas.before:
+                    Color:
+                        rgba: 0.533, 0.8, 0.459, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [dp(20)]
+
+                TextInput:
+                    id: busca_input
+                    hint_text: "Buscar produto pelo nome..."
+                    font_size: '16sp'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(40)
+
+                Button:
+                    text: "Buscar"
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '18sp'
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: root.buscar_produto()
+
+                Label:
+                    id: nome_label
+                    text: ""
+                    font_size: '16sp'
+                    size_hint_y: None
+                    height: dp(30)
+                    halign: "left"
+                    text_size: self.width, None
+                    color: 0, 0, 0, 1
+
+                TextInput:
+                    id: preco_input
+                    hint_text: "Novo preço"
+                    input_filter: "float"
+                    font_size: '16sp'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(40)
+
+                TextInput:
+                    id: quantidade_input
+                    hint_text: "Nova quantidade"
+                    input_filter: "int"
+                    font_size: '16sp'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(40)
+
+                Button:
+                    text: "Atualizar"
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '18sp'
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: root.atualizar_produto()
+
+                Label:
+                    id: status_label
+                    text: ""
+                    font_size: '14sp'
+                    size_hint_y: None
+                    height: dp(30)
+                    color: 0, 0, 0, 1
+
+                Button:
+                    text: "← Voltar"
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '16sp'
+                    background_normal: ''
+                    background_color: 0.6, 0.6, 0.6, 1
+                    on_press: app.root.current = "tela_produto"
+
+<TelaServico>:
+    name: "tela_servico"
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(15)
+
+        Label:
+            text: "Ateliê da Etty"
+            font_size: '28sp'
+            font_name: "Roboto-CondensedItalic.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Label:
+            text: "Serviços"
+            font_size: '22sp'
+            font_name: "Roboto-Bold.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+       
+
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(15)
+                padding: [0, 0, 0, dp(20)]
+
+                Button:
+                    text: "Cadastrar Serviço"
+                    size_hint: 0.9, None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    pos_hint: {"center_x": 0.5}
+                    on_press: app.root.current = "cadastrar_servico"
+
+                Button:
+                    text: "Localizar Serviço"
+                    size_hint: 0.9, None
+                    height: dp(50)
+                    font_size: '18sp'
+                    font_name: "Roboto-Bold.ttf"
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    pos_hint: {"center_x": 0.5}
+                    on_press: app.root.current = "localizar_servico"
+
+                Widget:
+
+                Button:
+                    text: "← Voltar"
+                    size_hint: None, None
+                    size: dp(160), dp(45)
+                    font_size: '16sp'
+                    background_normal: ''
+                    background_color: 0.6, 0.6, 0.6, 1
+                    color: 1, 1, 1, 1
+                    pos_hint: {"center_x": 0.5}
+                    on_press: app.root.current = "menu"
+
+<CadastrarServico>:
+    name: "cadastrar_servico"
+    tipo_servico_input: tipo_servico_input
+    custo_input: custo_input
+    status_label: status_label
+
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1  # Fundo verde padrão
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [dp(15), dp(15), dp(15), dp(15)]
+        spacing: dp(15)
+
+        # Cabeçalho
+        BoxLayout:
+            size_hint_y: None
+            height: dp(80)
+            orientation: "vertical"
+            spacing: dp(5)
+
+            Label:
+                text: "Ateliê da Etty"
+                font_size: dp(24)
+                font_name: "Roboto-CondensedItalic.ttf"
+                size_hint_y: None
+                height: dp(30)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+            Label:
+                text: "Cadastrar Serviço"
+                font_size: dp(18)
+                font_name: "Roboto-Bold.ttf"
+                size_hint_y: None
+                height: dp(25)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+        # Área do formulário com ScrollView
+        ScrollView:
+            size_hint_y: 1  
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(15)
+                padding: [dp(10), dp(10), dp(10), dp(10)]
+
+                # Caixa do formulário
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: dp(300)  # Altura fixa suficiente para o formulário
+                    canvas.before:
+                        Color:
+                            rgba: 0.533, 0.8, 0.459, 1  # Verde claro
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [dp(15)]
+                    padding: [dp(20), dp(20), dp(20), dp(20)]
+                    spacing: dp(20)
+
+                    # Campo Nome do Serviço
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: dp(80)
+                        spacing: dp(5)
+
+                        Label:
+                            text: "Nome do Serviço:"
+                            font_size: dp(16)
+                            size_hint_y: None
+                            height: dp(20)
+                            color: 0, 0, 0, 1
+
+                        TextInput:
+                            id: tipo_servico_input
+                            hint_text: "Digite o nome do serviço"
+                            font_size: dp(16)
+                            size_hint_y: None
+                            height: dp(40)
+                            multiline: False
+                            background_color: 1, 1, 1, 1
+
+                    # Campo Custo
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: dp(80)
+                        spacing: dp(5)
+
+                        Label:
+                            text: "Custo (R$):"
+                            font_size: dp(16)
+                            size_hint_y: None
+                            height: dp(20)
+                            color: 0, 0, 0, 1
+
+                        TextInput:
+                            id: custo_input
+                            hint_text: "0.00"
+                            input_filter: "float"
+                            font_size: dp(16)
+                            size_hint_y: None
+                            height: dp(40)
+                            multiline: False
+                            background_color: 1, 1, 1, 1
+
+                    # Botão Cadastrar
+                    Button:
+                        text: "Cadastrar"
+                        font_size: dp(18)
+                        size_hint_y: None
+                        height: dp(50)
+                        background_color: 0.176, 0.792, 0.271, 1
+                        color: 0, 0, 0, 1
+                        on_press: root.salvar_servico()
+
+                    # Mensagem de status
+                    Label:
+                        id: status_label
+                        text: ""
+                        font_size: dp(14)
+                        size_hint_y: None
+                        height: dp(30)
+                        color: 0, 0, 0, 1
+                        halign: "center"
+
+        # Botão Voltar
+        Button:
+            text: "← Voltar"
+            font_size: dp(16)
+            size_hint_y: None
+            height: dp(50)
+            background_color: 0.6, 0.6, 0.6, 1
+            color: 1, 1, 1, 1
+            on_press: app.root.current = "tela_servico"
+        
+
+<LocalizarServico>:
+    name: "localizar_servico"
+    busca_input: _busca_input
+    custo_input: _custo_input
+    status_label: _status_label
+
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [dp(15), dp(15), dp(15), dp(15)]
+        spacing: dp(15)
+
+        # Cabeçalho
+        BoxLayout:
+            size_hint_y: None
+            height: dp(80)
+            orientation: "vertical"
+            spacing: dp(5)
+
+            Label:
+                text: "Ateliê da Etty"
+                font_size: dp(24)
+                font_name: "Roboto-CondensedItalic.ttf"
+                size_hint_y: None
+                height: dp(30)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+            Label:
+                text: "Localizar Serviço"
+                font_size: dp(18)
+                font_name: "Roboto-Bold.ttf"
+                size_hint_y: None
+                height: dp(25)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+        # Área de busca
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(120)
+            canvas.before:
+                Color:
+                    rgba: 0.533, 0.8, 0.459, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [dp(15)]
+            padding: [dp(20), dp(20), dp(20), dp(20)]
+            spacing: dp(15)
+
+            TextInput:
+                id: _busca_input
+                hint_text: "Buscar serviço pelo nome..."
+                font_size: dp(16)
+                size_hint_y: None
+                height: dp(40)
+                multiline: False
+                background_color: 1, 1, 1, 1
+
+            Button:
+                text: "Buscar"
+                font_size: dp(16)
+                size_hint_y: None
+                height: dp(45)
+                background_color: 0.176, 0.792, 0.271, 1
+                color: 0, 0, 0, 1
+                on_press: root.buscar_servico()
+
+        # Área de resultados
+        BoxLayout:
+            id: resultados_box
+            orientation: "vertical"
+            size_hint_y: None
+            height: 0
+            opacity: 0
+            canvas.before:
+                Color:
+                    rgba: 0.533, 0.8, 0.459, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [dp(15)]
+            padding: [dp(20), dp(20), dp(20), dp(20)]
+            spacing: dp(15)
+
+            Label:
+                id: tipo_label
+                text: ""
+                font_size: dp(16)
+                size_hint_y: None
+                height: dp(30)
+                color: 0, 0, 0, 1
+                halign: "left"
+                text_size: self.width, None
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: dp(80)
+                spacing: dp(5)
+
+                Label:
+                    text: "Novo Custo (R$):"
+                    font_size: dp(16)
+                    size_hint_y: None
+                    height: dp(20)
+                    color: 0, 0, 0, 1
+
+                TextInput:
+                    id: _custo_input
+                    hint_text: "Digite o novo valor"
+                    input_filter: "float"
+                    font_size: dp(16)
+                    size_hint_y: None
+                    height: dp(40)
+                    multiline: False
+                    background_color: 1, 1, 1, 1
+
+            Button:
+                text: "Atualizar"
+                font_size: dp(16)
+                size_hint_y: None
+                height: dp(45)
+                background_color: 0.176, 0.792, 0.271, 1
+                color: 0, 0, 0, 1
+                on_press: root.atualizar_servico()
+
+            Label:
+                id: _status_label
+                text: ""
+                font_size: dp(14)
+                size_hint_y: None
+                height: dp(30)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+        # Espaço flexível
+        Widget:
+            size_hint_y: 1
+
+        # Botão Voltar
+        Button:
+            text: "← Voltar"
+            font_size: dp(16)
+            size_hint_y: None
+            height: dp(50)
+            background_color: 0.6, 0.6, 0.6, 1
+            color: 1, 1, 1, 1
+            on_press: app.root.current = "tela_servico"
+            
+<TelaEstoque>:
+    name: "tela_estoque"
+    busca_input: busca_input
+    resultado_box: resultado_box
+
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1  # Fundo #60A450
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(12)
+
+        # Título
+        Label:
+            text: "Ateliê da Etty"
+            font_size: '28sp'
+            font_name: "Roboto-CondensedItalic.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        # Subtítulo
+        Label:
+            text: "Consultar Estoque"
+            font_size: '22sp'
+            font_name: "Roboto-Bold.ttf"
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Widget:
+
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                padding: dp(20)
+                spacing: dp(14)
+                size_hint_y: None
+                height: self.minimum_height
+                canvas.before:
+                    Color:
+                        rgba: 0.533, 0.8, 0.459, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [dp(20)]
+
+                TextInput:
+                    id: busca_input
+                    hint_text: "Digite o nome do produto"
+                    font_size: '16sp'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(40)
+
+                Button:
+                    text: "Buscar"
+                    font_size: '18sp'
+                    size_hint_y: None
+                    height: dp(45)
+                    background_normal: ''
+                    background_color: 0.176, 0.792, 0.271, 1
+                    on_press: root.buscar_estoque()
+
+                # Botões de ação lado a lado
+                BoxLayout:
+                    size_hint_y: None
+                    height: dp(40)
+                    spacing: dp(10)
+
+                    Button:
+                        text: "Lista de Produtos"
+                        font_size: '16sp'
+                        size_hint_x: 0.5
+                        background_normal: ''
+                        background_color: 0.513, 0.874, 0.435, 1
+
+                    Button:
+                        text: "Quantidade"
+                        font_size: '16sp'
+                        size_hint_x: 0.5
+                        background_normal: ''
+                        background_color: 0.513, 0.874, 0.435, 1
+
+        # Área de resultados com scroll
+        ScrollView:
+            size_hint_y: 1
+
+            BoxLayout:
+                id: resultado_box
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(16)
+                padding: dp(10)
+
+        # Botão Voltar fixado abaixo
+        Button:
+            text: "← Voltar"
+            font_size: '16sp'
+            size_hint_y: None
+            height: dp(45)
+            background_normal: ''
+            background_color: 0.6, 0.6, 0.6, 1
+            color: 1, 1, 1, 1
+            on_press: app.root.current = "menu"
+#:import dp kivy.metrics.dp
+
+<TelaVendaBuscar>:
+    name: "tela_venda_buscar"
+    busca_input: busca_input
+    resultado_box: resultado_box
+    carrinho_box: carrinho_box
+
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1  # Verde escuro
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [dp(10), dp(10), dp(10), dp(10)]  
+        spacing: dp(10)
+
+        # --- Cabeçalho ---
+        BoxLayout:
+            size_hint_y: None
+            height: dp(80)  # Altura fixa para o cabeçalho
+            orientation: "vertical"
+            spacing: dp(5)
+
+            Label:
+                text: "Ateliê da Etty"
+                font_size: dp(24)  
+                font_name: "Roboto-CondensedItalic.ttf"
+                size_hint_y: None
+                height: dp(30)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+            Label:
+                text: "Buscar Produtos"
+                font_size: dp(18)
+                font_name: "Roboto-Bold.ttf"
+                size_hint_y: None
+                height: dp(25)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+        # --- Área de Busca ---
+        BoxLayout:
+            size_hint_y: None
+            height: dp(120)  # Altura fixa para a área de busca
+            orientation: "vertical"
+            spacing: dp(5)
+            padding: [dp(5), dp(5), dp(5), dp(5)]
+
+            TextInput:
+                id: busca_input
+                hint_text: "Digite o nome do produto..."
+                size_hint_y: None
+                height: dp(45)
+                font_size: dp(16)
+                multiline: False
+                background_color: 1, 1, 1, 1
+                foreground_color: 0, 0, 0, 1
+
+            Button:
+                text: "Buscar"
+                size_hint_y: None
+                height: dp(45)
+                font_size: dp(16)
+                background_color: 0.176, 0.792, 0.271, 1
+                on_press: root.buscar_produtos()
+
+        # --- Resultados e Carrinho ---
+        ScrollView:  # ScrollView principal para a área de conteúdo
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(10)
+
+                # --- Resultados ---
+                Label:
+                    text: "Resultados:"
+                    size_hint_y: None
+                    height: dp(25)
+                    font_size: dp(16)
+                    color: 0, 0, 0, 1
+
+                ScrollView:  # ScrollView interno para resultados
+                    size_hint_y: None
+                    height: dp(150)  # Altura fixa para resultados
+                    do_scroll_x: False
+
+                    BoxLayout:
+                        id: resultado_box
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: dp(5)
+
+                # --- Carrinho ---
+                Label:
+                    text: "Carrinho:"
+                    size_hint_y: None
+                    height: dp(25)
+                    font_size: dp(16)
+                    color: 0, 0, 0, 1
+
+                ScrollView:  # ScrollView interno para o carrinho
+                    size_hint_y: None
+                    height: dp(150)  # Altura fixa para o carrinho
+                    do_scroll_x: False
+
+                    BoxLayout:
+                        id: carrinho_box
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: dp(5)
+
+        # --- Botões Inferiores ---
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)  # Altura fixa para os botões
+            spacing: dp(10)
+            padding: [dp(10), 0, dp(10), 0]
+
+            Button:
+                text: "Avançar"
+                font_size: dp(16)
+                background_color: 0.176, 0.792, 0.271, 1
+                on_press:
+                    app.root.get_screen('tela_venda_finalizar').on_pre_enter()
+                    app.root.current = "tela_venda_finalizar"
+
+            Button:
+                text: "Voltar"
+                font_size: dp(16)
+                background_color: 0.6, 0.6, 0.6, 1
+                on_press: app.root.current = "menu"
+
+
+<TelaVendaFinalizar>:
+    name: "tela_venda_finalizar"
+    carrinho_box: carrinho_box
+    data_input: data_input
+    forma_pagamento_spinner: forma_pagamento_spinner
+    valor_pago_input: valor_pago_input
+    troco_label: troco_label
+    total_label: total_label
+
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [dp(10), dp(10), dp(10), dp(10)]
+        spacing: dp(10)
+
+        # Cabeçalho
+        BoxLayout:
+            size_hint_y: None
+            height: dp(80)
+            orientation: "vertical"
+            spacing: dp(5)
+
+            Label:
+                text: "Ateliê da Etty"
+                font_size: dp(24)
+                font_name: "Roboto-CondensedItalic.ttf"
+                size_hint_y: None
+                height: dp(30)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+            Label:
+                text: "Finalizar Venda"
+                font_size: dp(18)
+                font_name: "Roboto-Bold.ttf"
+                size_hint_y: None
+                height: dp(25)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+        # Área principal com ScrollView
+        ScrollView:
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(10)
+                padding: [dp(5), dp(5), dp(5), dp(5)]
+
+                # Carrinho
+                Label:
+                    text: "Itens da Venda:"
+                    size_hint_y: None
+                    height: dp(25)
+                    font_size: dp(16)
+                    color: 0, 0, 0, 1
+
+                ScrollView:
+                    size_hint_y: None
+                    height: dp(150)
+                    do_scroll_x: False
+
+                    BoxLayout:
+                        id: carrinho_box
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: dp(5)
+
+                # Dados da venda
+                BoxLayout:
+                    size_hint_y: None
+                    height: dp(40)
+                    spacing: dp(5)
+
+                    Label:
+                        text: "Data:"
+                        size_hint_x: 0.3
+                        font_size: dp(16)
+                        color: 0, 0, 0, 1
+
+                    TextInput:
+                        id: data_input
+                        size_hint_x: 0.7
+                        font_size: dp(16)
+                        multiline: False
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: dp(40)
+                    spacing: dp(5)
+
+                    Label:
+                        text: "Pagamento:"
+                        size_hint_x: 0.3
+                        font_size: dp(16)
+                        color: 0, 0, 0, 1
+
+                    Spinner:
+                        id: forma_pagamento_spinner
+                        size_hint_x: 0.7
+                        text: "Pix"
+                        values: ["Credito", "Debito", "Pix", "Dinheiro"]
+                        font_size: dp(16)
+                        background_color: 0.666, 0.953, 0.6, 1
+                        on_text: root.calcular_troco()
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: dp(40)
+                    spacing: dp(5)
+
+                    Label:
+                        text: "Valor Pago:"
+                        size_hint_x: 0.3
+                        font_size: dp(16)
+                        color: 0, 0, 0, 1
+
+                    TextInput:
+                        id: valor_pago_input
+                        size_hint_x: 0.7
+                        font_size: dp(16)
+                        input_filter: "float"
+                        multiline: False
+                        on_text: root.calcular_troco()
+
+                # Totais
+                Label:
+                    id: troco_label
+                    text: "Troco: R$ 0.00"
+                    size_hint_y: None
+                    height: dp(30)
+                    font_size: dp(16)
+                    color: 0, 0, 0, 1
+
+                Label:
+                    id: total_label
+                    text: "Total: R$ 0.00"
+                    size_hint_y: None
+                    height: dp(30)
+                    font_size: dp(16)
+                    color: 0, 0, 0, 1
+
+        # Botões inferiores
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+            padding: [dp(10), 0, dp(10), 0]
+
+            Button:
+                text: "Finalizar"
+                font_size: dp(16)
+                background_color: 0.176, 0.792, 0.271, 1
+                on_press: root.finalizar_venda()
+
+            Button:
+                text: "Voltar"
+                font_size: dp(16)
+                background_color: 0.6, 0.6, 0.6, 1
+                on_press: app.root.current = "tela_venda_buscar"
+
+<TelaRelatorio>:
+    name: "tela_relatorio"
+    
+    canvas.before:
+        Color:
+            rgba: 0.376, 0.643, 0.314, 1  # Fundo verde
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(15)
+        spacing: dp(10)
+
+        # Cabeçalho
+        BoxLayout:
+            size_hint_y: None
+            height: dp(80)
+            orientation: "vertical"
+            spacing: dp(5)
+
+            Label:
+                text: "Ateliê da Etty"
+                font_size: dp(24)
+                font_name: "Roboto-CondensedItalic.ttf"
+                size_hint_y: None
+                height: dp(30)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+            Label:
+                text: "Relatório Mensal"
+                font_size: dp(18)
+                font_name: "Roboto-Bold.ttf"
+                size_hint_y: None
+                height: dp(25)
+                color: 0, 0, 0, 1
+                halign: "center"
+
+        # Filtros
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+            padding: [dp(10), 0, dp(10), 0]
+
+            Label:
+                text: "Mês:"
+                size_hint_x: 0.2
+                font_size: dp(16)
+                color: 0, 0, 0, 1
+
+            Spinner:
+                id: mes_spinner
+                text: "Selecione"
+                values: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+                size_hint_x: 0.3
+                font_size: dp(16)
+                background_color: 0.9, 0.9, 0.9, 1
+                color: 0, 0, 0, 1
+
+            Label:
+                text: "Ano:"
+                size_hint_x: 0.2
+                font_size: dp(16)
+                color: 0, 0, 0, 1
+
+            Spinner:
+                id: ano_spinner
+                text: "2023"
+                values: ["2023", "2024", "2025"]
+                size_hint_x: 0.3
+                font_size: dp(16)
+                background_color: 0.9, 0.9, 0.9, 1
+                color: 0, 0, 0, 1
+
+        # Cards de Indicadores
+        GridLayout:
+            cols: 3
+            size_hint_y: None
+            height: dp(100)
+            spacing: dp(10)
+            padding: [dp(10), 0, dp(10), 0]
+
+            # Card Lucro
+            BoxLayout:
+                orientation: "vertical"
+                canvas.before:
+                    Color:
+                        rgba: 0.533, 0.8, 0.459, 1  # Verde claro
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [dp(10)]
+                padding: dp(10)
+                spacing: dp(5)
+
+                Label:
+                    text: "Lucro Total"
+                    font_size: dp(14)
+                    color: 0, 0, 0, 1
+                    halign: "center"
+
+                Label:
+                    id: lucro_text_label
+                    text: "R$ 0.00"
+                    font_size: dp(18)
+                    font_name: "Roboto-Bold.ttf"
+                    color: 0, 0, 0, 1
+                    halign: "center"
+
+            # Card Vendas
+            BoxLayout:
+                orientation: "vertical"
+                canvas.before:
+                    Color:
+                        rgba: 0.533, 0.8, 0.459, 1  # Verde claro
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [dp(10)]
+                padding: dp(10)
+                spacing: dp(5)
+
+                Label:
+                    text: "Total Vendas"
+                    font_size: dp(14)
+                    color: 0, 0, 0, 1
+                    halign: "center"
+
+                Label:
+                    id: vendas_text_label
+                    text: "0"
+                    font_size: dp(18)
+                    font_name: "Roboto-Bold.ttf"
+                    color: 0, 0, 0, 1
+                    halign: "center"
+
+            # Card Estoque
+            BoxLayout:
+                orientation: "vertical"
+                canvas.before:
+                    Color:
+                        rgba: 0.533, 0.8, 0.459, 1  # Verde claro
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [dp(10)]
+                padding: dp(10)
+                spacing: dp(5)
+
+                Label:
+                    text: "Itens em Estoque"
+                    font_size: dp(14)
+                    color: 0, 0, 0, 1
+                    halign: "center"
+
+                Label:
+                    id: estoque_text_label
+                    text: "0"
+                    font_size: dp(18)
+                    font_name: "Roboto-Bold.ttf"
+                    color: 0, 0, 0, 1
+                    halign: "center"
+
+        # Botão Gerar Relatório
+        Button:
+            text: "Gerar Relatório"
+            size_hint_y: None
+            height: dp(50)
+            font_size: dp(18)
+            background_color: 0.176, 0.792, 0.271, 1
+            color: 0, 0, 0, 1
+            on_press: root.gerar_relatorio()
+
+        # Área do Relatório Detalhado
+        ScrollView:
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Fundo branco
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [dp(10)]
+
+            Label:
+                id: resultado_label
+                text: "Selecione o mês e ano e clique em Gerar Relatório"
+                font_size: dp(16)
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                halign: "center"
+                valign: "top"
+                padding: [dp(10), dp(10)]
+                color: 0, 0, 0, 1
+
+        # Botão Voltar
+        Button:
+            text: "Voltar ao Menu"
+            size_hint_y: None
+            height: dp(50)
+            font_size: dp(16)
+            background_color: 0.6, 0.6, 0.6, 1
+            color: 1, 1, 1, 1
+            on_press: app.root.current = "menu"
