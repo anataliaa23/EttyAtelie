@@ -64,6 +64,10 @@ Algumas ideias de evolução do sistema:
 🛡️ Licença
 Projeto de uso educacional e privado. Código aberto apenas para fins acadêmicos.
 
+APK Mobile
+https://drive.google.com/drive/folders/1thGAnVqPqF1muIivpTelRSnJifycT8Rn
+
+
 1. Clone este repositório:
 
 ```bash
