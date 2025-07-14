@@ -1,0 +1,26 @@
+estrutura de diretório
+
+AtelieEttyDesktop/
+├── .gitignore
+├── README.md
+├── main.py
+├── requirements.txt
+├── /docs/
+│   └── Documento_de_Requisitos.md
+├── /src/
+│   ├── __init__.py
+│   ├── estoque.py
+│   ├── vendas.py
+│   ├── servicos.py
+│   ├── relatorios.py
+│   └── database.py
+├── /assets/
+│   ├── logo.png
+│   └── icones/
+├── /kv/
+│   ├── main.kv
+│   ├── estoque.kv
+│   ├── vendas.kv
+│   └── relatorios.kv
+└── /build/
+    └── (arquivos gerados com pyinstaller ou buildozer)
